@@ -1,11 +1,9 @@
 <!-- Sidebar.svelte -->
-<script>
+<script lang="ts">
   import { v4 as uuidv4 } from "uuid";
-  import { tabs, currentTabId } from "./store" 
+  import { tabs, currentTabId, isSidebarCollapsed } from "./store";
 
-  export let isSidebarCollapsed;
-
-  function switchTab(tabId) {
+  function switchTab(tabId: string) {
     currentTabId.set(tabId);
   }
 
@@ -23,10 +21,9 @@
     });
     currentTabId.set(newId);
   }
-
 </script>
 
-<aside class="sidebar" class:collapsed={isSidebarCollapsed}>
+<aside class="sidebar" class:collapsed={$isSidebarCollapsed}>
   <button class="new-tab-button" on:click={createNewTab}>New Tab</button>
   {#each $tabs as { id, title }, i}
     <button

@@ -1,24 +1,20 @@
 <!-- App.svelte -->
-<script>
-
+<script lang="ts">
   import TabContent from "./lib/TabContent.svelte";
   import Sidebar from "./lib/Sidebar.svelte";
-  import { tabs, currentTabId } from "./lib/store";
+  import { tabs, currentTabId, isSidebarCollapsed } from "./lib/store";
 
   currentTabId.set($tabs[0].id);
-
-  let isSidebarCollapsed = false;
-
-  function toggleSidebar() {
-    isSidebarCollapsed = !isSidebarCollapsed;
-  }
 </script>
 
 <div class="container">
-  <Sidebar {isSidebarCollapsed} />
+  <Sidebar />
   <div class="main-container">
-    <button class="toggle-button" on:click={toggleSidebar}>
-      <img src="hamburger.svg" height=20 width=20 alt="Show/hide sidebar">
+    <button
+      class="toggle-button"
+      on:click={() => isSidebarCollapsed.set(!$isSidebarCollapsed)}
+    >
+      <img src="hamburger.svg" height="20" width="20" alt="Show/hide sidebar" />
     </button>
     <TabContent />
   </div>

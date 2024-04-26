@@ -1,35 +1,39 @@
 <!-- TabContent.svelte -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<script>
+<script lang="ts">
   import { afterUpdate } from "svelte";
-  import { tabs, currentTabId } from "./store" 
+  import { tabs, currentTabId } from "./store";
 
   let isEditingTitle = false;
   let isEditingContent = false;
   let editedTitle = "";
   let editedContent = "";
-  let titleInput;
-  let contentTextarea;
+  let titleInput: HTMLElement;
+  let contentTextarea: HTMLElement;
 
-  function getTab(tabId) {
+  function getTab(tabId: string) {
     return $tabs.find((t) => t.id === tabId);
   }
 
   function updateTabTitle() {
     const changedTab = getTab($currentTabId);
-    changedTab.title = editedTitle;
+    if (changedTab) {
+      changedTab.title = editedTitle;
+      tabs.update((tabs) => tabs);
+    }
     isEditingTitle = false;
     editedTitle = "";
-    tabs.update( (tabs) => tabs );
   }
 
   function updateTabContent() {
     const changedTab = getTab($currentTabId);
-    changedTab.content = editedContent;
+    if (changedTab) {
+      changedTab.content = editedContent;
+      tabs.update((tabs) => tabs);
+    }
     isEditingContent = false;
     editedContent = "";
-    tabs.update( (tabs) => tabs );
   }
 
   afterUpdate(() => {
@@ -60,11 +64,11 @@
   {:else}
     <h2
       on:click={() => {
-        editedTitle = getTab($currentTabId).title;
+        editedTitle = getTab($currentTabId)?.title ?? "";
         isEditingTitle = true;
       }}
     >
-      {getTab($currentTabId).title}
+      {getTab($currentTabId)?.title}
     </h2>
   {/if}
   {#if isEditingContent}
@@ -84,9 +88,9 @@
   {:else}
     <pre
       on:click={() => {
-        editedContent = getTab($currentTabId).content;
+        editedContent = getTab($currentTabId)?.content ?? "";
         isEditingContent = true;
-      }}>{getTab($currentTabId).content}</pre>
+      }}>{getTab($currentTabId)?.content}</pre>
   {/if}
 {/if}
 

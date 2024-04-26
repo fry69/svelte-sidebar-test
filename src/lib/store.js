@@ -7,3 +7,4 @@ export const tabs = writable([
 ]);
 
 export const currentTabId = writable();
+export const isSidebarCollapsed = writable(false);
