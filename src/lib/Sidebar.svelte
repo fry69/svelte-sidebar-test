@@ -44,6 +44,7 @@
     background-color: #666;
     border-right: 1px solid #111;
     overflow: auto;
+    height: 80%;
   }
 
   .sidebar:not(collapsed) {

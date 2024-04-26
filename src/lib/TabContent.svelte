@@ -109,8 +109,9 @@
   }
 
   textarea {
-    width: 15em;
-    height: 10em;
+    width: 100%;
+    height: 75%;
+    box-sizing: border-box;
     font-family: inherit;
     font-size: inherit;
     resize: none;
