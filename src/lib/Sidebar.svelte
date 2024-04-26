@@ -13,7 +13,7 @@
     const newTab = {
       id: newId,
       title: `New Title ${randomNumber}`,
-      content: `New content ${randomNumber}`,
+      content: `New content ${randomNumber}\n\n\nContent end`,
     };
     tabs.update(($tabs) => {
       $tabs.push(newTab);
@@ -41,7 +41,7 @@
     display: grid;
     grid-template-rows: 3em repeat(auto-fill, 2.5em);
 
-    background-color: #7777;
+    background-color: #666;
     border-right: 1px solid #111;
     overflow: auto;
   }
