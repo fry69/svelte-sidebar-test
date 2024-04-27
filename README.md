@@ -1,6 +1,6 @@
 # Svelte Sidebar Experiment
 
-Just a learning experiment. Currently blatantly violates a11y best practices. Do not use.
+Just a learning experiment.
 
 ---
 
