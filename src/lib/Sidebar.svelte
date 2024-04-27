@@ -94,6 +94,6 @@
   }
 
   .sidebar .new-tab-button:hover {
-    background-color: red;
+    background-color: darkmagenta;
   }
 </style>

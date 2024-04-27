@@ -7,7 +7,7 @@
   currentTabId.set($tabs[0].id);
 </script>
 
-<div class="header">
+<div class="container">
   {#if $isSidebarCollapsed}
   <button
     class="toggle-button"
@@ -23,10 +23,7 @@
     <img src="x.svg" height="20" width="20" alt="Show/hide sidebar" />
   </button>
   {/if}
-  <h3 class="title">Svelte Sidebar Experiment</h3>
-</div>
-
-<div class="container">
+  <h3 class="header">Svelte Sidebar Experiment</h3>
   <Sidebar />
   <div class="main-container">
     <TabContent />
@@ -35,21 +32,17 @@
 
 <style>
   .header {
-    display: grid;
-    grid-template-columns: 1.5em auto;
-  }
-
-  .title {
     margin: 0;
     padding-bottom: 0.3em;
     text-align: center;
-    color: #aaa;
+    color: #666;
     text-decoration: underline;
   }
 
   .container {
     display: grid;
     grid-template-columns: auto 1fr;
+    grid-template-rows: 2em auto;
     height: 100vh;
   }
 
@@ -59,6 +52,7 @@
   }
 
   .toggle-button {
+    justify-self: start;
     position: sticky;
     top: 0;
     background-color: #666;

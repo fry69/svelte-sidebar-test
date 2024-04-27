@@ -99,6 +99,11 @@
     margin-top: 0;
     margin-bottom: 0.5em;
     text-align: center;
+    cursor: pointer;
+  }
+
+  h2:hover {
+    color: coral;
   }
 
   pre {
@@ -106,6 +111,12 @@
     white-space: pre-wrap;
     margin: 0;
     padding: 0.5em;
+    cursor: pointer;
+  }
+
+  pre:hover {
+    background-color: darkred;
+    transition: all 0.2s ease-in-out;
   }
 
   textarea {
